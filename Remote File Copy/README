@@ -1,0 +1,3 @@
+A remote file copy program: sends/receives UDP packets with a sliding window flow control algorithm using selective-reject ARQ.
+
+Note: Program requires proprietary external libraries (not provided) and is intended to be displayed as-is for pedagogical demonstration of code.

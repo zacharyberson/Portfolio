@@ -1,0 +1,15 @@
+#ifndef __RCOPY_H
+#define __RCOPY_H
+
+#define NUM_RCOPY_ARGS 8
+#define OFFSET_BUFFER_SIZE 3
+#define OFFSET_ERROR_PERCENT 4
+#define OFFSET_LOCAL_FILE 1
+#define OFFSET_REMOTE_FILE 2
+#define OFFSET_REMOTE_MACHINE 6
+#define OFFSET_REMOTE_PORT 7
+#define OFFSET_WINDOW_SIZE 5
+
+typedef enum {INIT, SEND_FILENAME, DATA, EXIT} STATE;
+
+#endif

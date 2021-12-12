@@ -1,0 +1,5 @@
+Author: Zachary Berson
+
+Notes:
+Run main.py with python, which will automatically
+run make and start the Encrypted Block Device Driver.

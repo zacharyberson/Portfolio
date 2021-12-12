@@ -1,2 +1,2 @@
 # Portfolio
-Eclectic Coding Experience Presented via Collection Programs Written
+Eclectic Coding Experience Presented as a Collection of Programs Written

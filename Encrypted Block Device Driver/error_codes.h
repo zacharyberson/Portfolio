@@ -1,0 +1,22 @@
+#ifndef __ERROR_CODES_H
+#define __ERROR_CODES_H
+
+#define INVALID_FILENAME -11
+#define INVALID_POINTER -12
+#define INVALID_INDEX -13
+#define ALREADY_MOUNTED -14
+#define NO_MORE_FILES -16
+#define STORAGE_EXCEEDED -17
+#define NO_SUCH_FILE -18
+#define INVALID_FORMAT -19
+#define INVALID_CASE -20
+#define INVALID_ARGS -21
+#define OPEN_FAILURE -22
+#define WRITE_ERROR -23
+#define READ_ERROR -24
+
+
+
+
+
+#endif

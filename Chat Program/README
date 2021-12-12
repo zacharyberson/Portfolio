@@ -1,0 +1,3 @@
+A TCP chat client and chat server supporting synchronous communication between many instances of the chat client.
+
+Note: Program requires proprietary external libraries (not provided) and is intended to be displayed as-is for pedagogical demonstration of code.

@@ -1,0 +1,27 @@
+#ifndef __LIB_H
+#define __LIB_H
+
+typedef enum {FALSE, TRUE} BOOLEAN;
+
+#define FLAG_DATA 1
+#define FLAG_FILENAME_ACK 7
+#define FLAG_FILENAME 6
+#define FLAG_EOF 8
+#define FLAG_EOF_ACK 9
+#define FLAG_INVALID_FILENAME 10
+#define FLAG_RR 3
+#define FLAG_SREJ 4
+#define INVALID_ARGS -63
+#define INVALID_CALL -231
+#define INVALID_STATE -10
+#define INVALID_FILENAME 54
+#define MAX_FILENAME_LEN 100
+#define MAX_PERCENT_ERROR 100
+#define MAX_PORT 65535
+#define MIN_PERCENT_ERROR 0
+
+typedef enum {RESP_RR, RESP_SREJ, RESP_EOF} RESPONSE;
+
+
+
+#endif
