@@ -1,0 +1,30 @@
+table, th, td {
+   border: 2px solid black;
+   border-collapse: collapse;
+}
+
+input {
+   border: 1px solid black;
+}
+
+th, td {
+   padding: 12px;
+}
+
+th {
+   text-align: center;
+   max-lines: 1;
+}
+
+td {
+   text-align: right;
+}
+
+h1, h2, h3, button {
+   text-align: center;
+}
+
+/* div {
+   max-width: 500px;
+   margin: auto;
+ } */

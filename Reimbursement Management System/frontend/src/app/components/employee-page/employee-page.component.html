@@ -1,0 +1,104 @@
+<div [ngSwitch]="this.curState">
+   <div *ngSwitchCase="State.rChoice">
+      <h1>
+         Welcome Back, {{this.e.fullName}}!
+      </h1><br><br>
+      <div id="goodMessage" [hidden]='goodHide'>
+         <h3>Request Submitted!</h3>
+      </div><br><br>
+      <button id='cSubmitRequest' (click)='submitForm()'>Submit a Request</button>
+      <span> </span>
+      <button id='cViewHistory' (click)='viewHistory()'>View History</button><br><br>
+
+      <button id='rLogout' (click)='logout()'>Back</button><br>
+   </div>
+
+   <div *ngSwitchCase="State.rSubmit">
+      <h2>Enter information</h2><br>
+      <form>
+         <select id="typeSelect" name="Reimbursement Type" size=1 required [(ngModel)]="newReim.reason" name='reason'>
+            <option value=1>Food</option>
+            <option value=2>Supplies</option>
+            <option value=3>Travel</option>
+            <option value=4>Shipping</option>
+            <option value=5>Toys</option>
+         </select>
+         <input type="text" id="amount" maxlength="12" pattern="^[0-9]*\.?[0-9]{0,2}$"
+            title="Enter proper dollar amount." placeholder="0.00" required [(ngModel)]="newAmount" name='amount'>
+         <input type="text" id="note" maxlength="200"
+            title="(Optional) Include any additional information (Max. 200 characters)." placeholder="Note"
+            [(ngModel)]='newReim.note' name='note'>
+         <input type="file" (change)="onFileChanged($event)">
+         <button type="submit" id="submit" (click)="submitReimbursement($event)">Submit</button><br><br>
+         <button id='rChoice' (click)='choices()'>Back</button><br>
+      </form>
+   </div>
+
+   <div *ngSwitchCase="State.rType">
+      <h4>
+         Please select the type of Reimbursement History to display.
+      </h4><br>
+
+      <select id="reimbursementSelect" name="Reimbursement Type" size=1 autofocus required [(ngModel)]="selectItem">
+         <option value=0>All</option>
+         <option value=1>Pending</option>
+         <option value=2>Denied</option>
+         <option value=3>Approved</option>
+      </select>
+      <button id='rDropdown' (click)='listReim()'>List Reimbursements</button><br><br>
+      <button id='rChoice' (click)='choices()'>Back</button><br>
+   </div>
+
+   <div *ngSwitchCase="State.rList">
+      <h3>Transactions</h3>
+      <h4>Click on a row to view more information</h4>
+      <table>
+         <tr>
+            <th>Status</th>
+            <th>Amount</th>
+            <th>Submitted By</th>
+            <th>Time Submitted</th>
+         </tr>
+         <tr (click)='detailReim(r)' *ngFor="let r of reimbursements">
+            <td>{{this.Status[r.status]}}</td>
+            <td>{{r.amount}}</td>
+            <td>{{r.fullName}}</td>
+            <td>{{r.timeSubmitted}}</td>
+         </tr>
+      </table><br><br>
+      <button id='lGoBack' (click)='viewHistory()'>Back</button>
+   </div>
+
+   <div *ngSwitchCase="State.rDetails">
+      <h3>Transaction Details</h3>
+      <table>
+         <tr>
+            <th>Status</th>
+            <th>Reason</th>
+            <th>Amount</th>
+            <th>Submitted By</th>
+            <th>Username</th>
+            <th>User Id</th>
+            <th>Time Submitted</th>
+            <th>Time Processed</th>
+            <th>Note</th>
+            <th>Picture</th>
+         </tr>
+         <tr>
+            <td>{{Status[sel.status]}}</td>
+            <td>{{Reason[sel.reason]}}</td>
+            <td>{{sel.amount}}</td>
+            <td>{{sel.fullName}}</td>
+            <td>{{sel.username}}</td>
+            <td>{{sel.userId}}</td>
+            <td>{{sel.timeSubmitted}}</td>
+            <td>{{sel.timeProcessed}}</td>
+            <td>{{sel.note}}</td>
+            <td>
+               <img *ngIf="notNull()" [src]='cleanURL(imgSrc)' width=200 />
+            </td>
+         </tr>
+      </table><br><br>
+      <button id='dGoBack' (click)='listReim()'>Back</button><br>
+   </div>
+</div>

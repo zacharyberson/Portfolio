@@ -1,0 +1,79 @@
+<div [ngSwitch]="this.curState">
+   <div *ngSwitchCase="State.rType">
+      <h1>
+         Welcome Back, Sir!
+      </h1><br>
+      <h4>
+         Please select the type of Reimbursement to display.
+      </h4><br>
+
+      <select id="reimbursementSelect" name="Reimbursement Type" size=1 autofocus required [(ngModel)]="selectItem">
+         <option value=0>All</option>
+         <option value=1>Pending</option>
+         <option value=2>Denied</option>
+         <option value=3>Approved</option>
+      </select>
+      <button id='rDropdown' (click)='listReim()'>List Reimbursements</button><br><br>
+      <button id='rLogout' (click)='logout()'>Back</button><br>
+   </div>
+
+   <div *ngSwitchCase="State.rList">
+      <h3>Transactions</h3>
+      <h4>Click on a row to view more information</h4>
+      <table>
+         <tr>
+            <th>Status</th>
+            <th>Amount</th>
+            <th>Submitted By</th>
+            <th>Time Submitted</th>
+         </tr>
+         <tr (click)='detailReim(r)' *ngFor="let r of reimbursements">
+            <td>{{this.Status[r.status]}}</td>
+            <td>{{r.amount}}</td>
+            <td>{{r.fullName}}</td>
+            <td>{{r.timeSubmitted}}</td>
+         </tr>
+      </table><br><br>
+      <button id='lGoBack' (click)='typeReim()'>Back</button>
+   </div>
+
+   <div *ngSwitchCase="State.rDetails">
+      <h3>Transaction Details</h3>
+      <table>
+         <tr>
+            <th>Status</th>
+            <th>Reason</th>
+            <th>Amount</th>
+            <th>Submitted By</th>
+            <th>Username</th>
+            <th>User Id</th>
+            <th>Time Submitted</th>
+            <th>Time Processed</th>
+            <th>Note</th>
+            <th>Picture</th>
+         </tr>
+         <tr>
+            <td>{{Status[sel.status]}}</td>
+            <td>{{Reason[sel.reason]}}</td>
+            <td>{{sel.amount}}</td>
+            <td>{{sel.fullName}}</td>
+            <td>{{sel.username}}</td>
+            <td>{{sel.userId}}</td>
+            <td>{{sel.timeSubmitted}}</td>
+            <td>{{sel.timeProcessed}}</td>
+            <td>{{sel.note}}</td>
+            <td>
+               <img *ngIf="notNull()" [src]='cleanURL(imgSrc)' width=200 />
+            </td>
+         </tr>
+      </table><br><br>
+      <div *ngIf='this.sel_pending'>
+         <button id='dApprove' (click)='approveReim()'>Approve</button>
+         <button id='dDeny' (click)='denyReim()'>Deny</button><br><br>
+      </div>
+      <div id="approveMessage" [hidden]='appHide'>Approved!</div>
+      <div id="denyMessage" [hidden]='denHide'>Denied!</div><br>
+      <div id="failMessage" [hidden]='failHide'>Failed to process...</div>
+      <button id='dGoBack' (click)='listReim()'>Back</button><br>
+   </div>
+</div>
